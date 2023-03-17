@@ -9,7 +9,7 @@ env:
 
 jobs:
   mainjob:
-    # name: "print env variables"
+    name: "print env variables"
     runs-on: ubuntu-latest
     
     env:
