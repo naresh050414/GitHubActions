@@ -26,11 +26,11 @@ jobs:
           echo "testvar $testvar"
           echo " testvar ${{ env.testvar }}"
 
-    - name: set the value
-      id: step_one
-      run: |
-        echo "action_state=yello" >> $GITHUB_ENV
-    - name: get the value from env dynamic var
-      id: step_two
-      run: |
-        echo "${{ action_ste }}"
+      - name: set the value
+        id: step_one
+        run: |
+          echo "action_state=yello" >> $GITHUB_ENV
+      - name: get the value from env dynamic var
+        id: step_two
+        run: |
+          echo "${{ action_ste }}"
