@@ -4,26 +4,25 @@ on:
   workflow_dispatch:
 
 env:
-  day_of_week: funday
+  DAY_OF_WEEK: funday
   testvar: workflow_level_scope
 
 jobs:
-  
-  env_var_demo:
-    
+  mainjob:
+    name: "print env variables"
     runs-on: ubuntu-latest
     
     env:
-      greeting: hello
+      Greeting: Funday
       testvar: job_level_scope
     
     steps:
       - name: just a random step
         env:
-          greeting: hello from step
+          First_name: student
           testvar: step_scoped_var
         run: |
-          echo " $greeting is a $day_of_week"
-          echo "Lets say $greeting"
-          echo " lets test env scope for ${{ env.testvar }}"
+          echo " $Greeting $First_name. Today is a $DAY_OF_WEEK"
+          echo "testvar $testvar"
+          echo " testvar ${{ env.testvar }}"
 
