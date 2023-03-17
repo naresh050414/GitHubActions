@@ -1,1 +1,54 @@
+# basic workflow
+name: A basic workflow
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: ["main"]
+
+
+    # How do you run the workflow manually from the actions tab
+  workflow_dispatch:
+  
+# Workflow consists of a sequence of one or more jobs that either run parallel or sequencially
+jobs:
+  # This is the first job
+  build-app:
+    # Each job needs a runner to run on , specify it
+    runs-on: ubuntu-latest
+
+    # with in the job, you run a several steps, these steps can be schell scripts or , githu actions.
+    steps:
+      
+      # Chekout your repo under $github_workspace, so your job can access it.
+      - uses: actions/checkout@v3
+      # run a single command using the runners shell
+      - name : run a one-line scrip
+        run: echo hello,world!
+      
+      # Runs a set of commands on the runner shell
+      - name: run multi line script
+        run : |
+          echo add other actions to buid
+          echo test, and deploy your project
+  build-api:
+    needs: build
+    runs-on : windows-latest
+    steps:
+      - run: echo hello building api job
+
+  build-db:
+    needs: build
+    runs-on : windows-latest
+    steps:
+      - name: building db
+        run: echo hello building db job
+
+  package:
+    needs: [build-app, build-db]
+    runs-on: macos-latest
+    steps:
+      - name: macos-run
+        run: echo hello from macos job
+    
 
