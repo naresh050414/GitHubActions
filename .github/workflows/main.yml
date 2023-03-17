@@ -32,13 +32,12 @@ jobs:
           echo add other actions to buid
           echo test, and deploy your project
   build-api:
-    needs: build
     runs-on : windows-latest
     steps:
       - run: echo hello building api job
 
   build-db:
-    needs: build
+    needs: build-app
     runs-on : windows-latest
     steps:
       - name: building db
