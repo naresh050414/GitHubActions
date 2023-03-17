@@ -33,4 +33,4 @@ jobs:
       - name: get the value from env dynamic var
         id: step_two
         run: |
-          echo "${{ action_ste }}"
+          echo "${{ action_state }}"
