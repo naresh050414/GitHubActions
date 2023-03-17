@@ -23,7 +23,7 @@ jobs:
           greeting: hello from step
           testvar: step_scoped_var
         run: |
-          echo " $this is a $day_of_week"
+          echo " $greeting is a $day_of_week"
           echo "Lets say $greeting"
           echo " lets test env scope for ${{ env.testvar }}"
 
