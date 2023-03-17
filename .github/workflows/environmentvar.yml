@@ -11,7 +11,7 @@ jobs:
   
   env_var_demo:
     
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     env:
       greeting: hello
