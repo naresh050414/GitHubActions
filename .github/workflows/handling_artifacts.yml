@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
- jobs-1:
+ jobs_1:
     name: upload-artifacts
     runs-on: ubuntu-latest
 
