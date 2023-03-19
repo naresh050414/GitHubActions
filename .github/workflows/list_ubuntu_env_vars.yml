@@ -1,0 +1,17 @@
+name: workflow to play with ubuntu default env vars
+
+on:
+
+jobs:
+  - name: list ubuntu env vars
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: list ubuntu env vars one by one
+
+        run: |
+          echo "$GITHUB_ACTION"
+          echo "GITHUB_ENV"
+          echo "GITHUB_JOB"
+          echo "GITHUB_PATH"
+          echo "RUNNER_NAME"
