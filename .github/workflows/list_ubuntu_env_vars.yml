@@ -1,7 +1,7 @@
 name: workflow to play with ubuntu default env vars
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   - name: list ubuntu env vars
