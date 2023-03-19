@@ -7,20 +7,20 @@ on:
 jobs:
 
   ubuntu-environemnt-variables:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: env
 
 
 
   windows-environemnt-variables:
-    runs_on: windows-latest
+    runs-on: windows-latest
     steps:
       - name : running env varis
         run: env
 
   mac-environemnt-variables:
-    runs_on: macos-latest
+    runs-on: macos-latest
 
     steps: 
       - run: env
