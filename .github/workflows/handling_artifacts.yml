@@ -1,0 +1,33 @@
+name: lets play with some github artifacts
+
+on:
+  workflow_dispatch:
+
+jobs:
+ jobs-1:
+    name: upload-artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create-a-local-file
+        run: |
+          echo " this step will upload an artifact to consume in one job"
+          echo " Please upload me to next job" >> file.txt
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: file
+          path: file.txt
+        
+
+
+  jobs-2:
+    name: download-artifacts
+    runs-on: ubuntu-latest
+    needs: job-1
+        
+    steps:
+      - uses: actions/download-artifacts@v2
+        with:
+          name: file
+      - run: cat file.txt
