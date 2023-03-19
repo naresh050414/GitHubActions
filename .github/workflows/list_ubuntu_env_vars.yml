@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  - name: list ubuntu env vars
+  mainjob:
+    name: list ubuntu env vars
     runs-on: ubuntu-latest
 
     steps:
