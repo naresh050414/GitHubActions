@@ -6,13 +6,17 @@ on:
 jobs:
   passing-values-between-steps:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{steps.var_source_step_two.outputs.var1_name}}
     steps:
       - name: set the value using env vars
-        id: var_source_step
+        id: var_source_step_one
         run: |
           echo " variablename=this-is-a-value" >> $GITHUB_ENV
 
       - name: create variables
+        id: var_source_step_two
+
         run: |
           echo "Performing a random task"
           echo "::set-output name=var1_name::Valueone"
@@ -21,7 +25,14 @@ jobs:
         run: |
           echo " Print the variable values from previous steps"
           echo variablename: ${{ env.variablename }}
-          echo var1_name: ${{ steps.var_source_step.outputs.var1_name }}
-          echo var2_date: ${{ steps.var_source_step.outputs.var2_date }}
+          echo var1_name: ${{ steps.var_source_step_two.outputs.var1_name }}
+          echo var2_date: ${{ steps.var_source_step_two.outputs.var2_date }}
 
-    
+  passing-values-between-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: read values from previous job
+        id: var_dest_step
+        run: |
+          echo "Lets read some variables form previous job"
+          echo "variablename: ${{ needs.passing-values-between-steps.outputs.output1"
