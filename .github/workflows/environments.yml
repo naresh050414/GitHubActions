@@ -1,0 +1,14 @@
+name: github environemnts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  get_env_vars:
+    name: get env vars from a specific env
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: pull_secret_from_dev_env
+        run : |
+          echo "the value of $dev_env_url is : ${{ DEV_ENV_URL }}"
