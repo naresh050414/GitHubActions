@@ -35,4 +35,4 @@ jobs:
         id: var_dest_step
         run: |
           echo "Lets read some variables form previous job"
-          echo "variablename: ${{ needs.passing-values-between-steps.outputs.output1"
+          echo "variablename: ${{ needs.passing-values-between-steps.outputs.output1 }}"
