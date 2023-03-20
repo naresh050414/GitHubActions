@@ -1,0 +1,26 @@
+name: Passing values to next steps and jobs
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  passing-values-between-steps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set the value using env vars
+        id: var_source_step
+        run: |
+          echo " variablename=this-is-a-value" >> $GITHUB_ENV
+
+      - name: create variables
+        run: |
+          echo "Performing a random task"
+          echo "::set-output name=var1_name::Valueone"
+          echo "::set-output name=var2_date::$(date +'%Y-%m-%d-%H-%M')"
+      - name : get-variable-value
+        run: |
+          echo " Print the variable values from previous steps"
+          echo var1_name: ${{ steps.var_source_step.outputs.var1_name}}
+          echo var2_date: ${{ steps.var_source_step.outputs.var2_date}}
+          
+    
